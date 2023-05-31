@@ -59,7 +59,7 @@ dependencies {
     }
     // Commands
     implementation("cloud.commandframework:cloud-annotations:1.8.3")
-    implementation("cloud.commandframework:cloud-minecraft-extras:1.8.0")
+    implementation("cloud.commandframework:cloud-minecraft-extras:1.8.3")
     implementation("cloud.commandframework:cloud-paper:1.8.3")
     annotationProcessor("cloud.commandframework:cloud-annotations:1.8.3")
     implementation("me.lucko:commodore:2.2")
