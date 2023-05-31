@@ -25,7 +25,7 @@ if (!File("$rootDir/.git").exists()) {
     ).also { System.exit(1) }
 }
 
-var baseVersion by extra("1.1.1")
+var baseVersion by extra("1.0.0")
 var extension by extra("")
 var snapshot by extra("-SNAPSHOT")
 
