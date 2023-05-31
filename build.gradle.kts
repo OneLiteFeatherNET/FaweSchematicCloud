@@ -52,10 +52,17 @@ dependencies {
     compileOnly("io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT")
     // Fawe Support
     implementation(platform("com.intellectualsites.bom:bom-1.18.x:1.27"))
+    implementation("com.intellectualsites.arkitektonika:Arkitektonika-Client:2.1.2")
     compileOnly("com.fastasyncworldedit:FastAsyncWorldEdit-Core")
     compileOnly("com.fastasyncworldedit:FastAsyncWorldEdit-Bukkit") {
         isTransitive = false
     }
+    // Commands
+    implementation("cloud.commandframework:cloud-annotations:1.8.0")
+    implementation("cloud.commandframework:cloud-minecraft-extras:1.8.0")
+    implementation("cloud.commandframework:cloud-paper:1.8.0")
+    annotationProcessor("cloud.commandframework:cloud-annotations:1.8.0")
+    implementation("me.lucko:commodore:2.2")
 
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
