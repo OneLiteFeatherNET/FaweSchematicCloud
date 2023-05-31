@@ -2,10 +2,7 @@ package dev.themeinerlp.faweschematiccloud.util
 
 import com.intellectualsites.arkitektonika.Arkitektonika
 import com.intellectualsites.arkitektonika.SchematicKeys
-import com.sk89q.worldedit.command.FlattenedClipboardTransform
-import com.sk89q.worldedit.extent.clipboard.Clipboard
 import com.sk89q.worldedit.extent.clipboard.io.BuiltInClipboardFormat
-import com.sk89q.worldedit.extent.clipboard.io.ClipboardFormats
 import com.sk89q.worldedit.session.ClipboardHolder
 import dev.themeinerlp.faweschematiccloud.FAWESchematicCloud
 import org.apache.logging.log4j.LogManager
@@ -25,7 +22,7 @@ class SchematicUploader(
     private val tempDir = faweSchematicCloud.dataFolder.toPath()
     private val arkitektonika: Arkitektonika by lazy {
         val backendUrl =
-            faweSchematicCloud.config.getString("backendUrl") ?: throw NullPointerException("Backend Url not found")
+            faweSchematicCloud.config.getString("arkitektonika.backendUrl") ?: throw NullPointerException("Arkitektonika Backend Url not found")
         Arkitektonika.builder().withUrl(backendUrl).build()
     }
 
@@ -38,9 +35,15 @@ class SchematicUploader(
 
     private fun wrapIntoResult(schematicKeys: SchematicKeys?): SchematicUploadResult {
         schematicKeys ?: return SchematicUploadResult(false)
-        val download = (faweSchematicCloud.config.getString("downloadUrl") ?: throw NullPointerException("Download Url not found")).replace("{key}", schematicKeys.accessKey)
-        val delete = (faweSchematicCloud.config.getString("deleteUrl") ?: throw NullPointerException("Delete Url not found")).replace("{key}", schematicKeys.deletionKey)
-        return SchematicUploadResult(true, download, delete)
+        val apiDownload = (faweSchematicCloud.config.getString("arkitektonika.downloadUrl")
+            ?: throw NullPointerException("Arkitektonika Download Url not found")).replace("{key}", schematicKeys.accessKey)
+        val apiDelete = (faweSchematicCloud.config.getString("arkitektonika.deleteUrl")
+            ?: throw NullPointerException("Arkitektonika Delete Url not found")).replace("{key}", schematicKeys.deletionKey)
+        val download = (faweSchematicCloud.config.getString("web.downloadUrl")
+            ?: throw NullPointerException("Web Download Url not found")).replace("{key}", schematicKeys.accessKey)
+        val delete = (faweSchematicCloud.config.getString("web.deleteUrl")
+            ?: throw NullPointerException("Web Delete Url not found")).replace("{key}", schematicKeys.deletionKey)
+        return SchematicUploadResult(true, apiDownload, apiDelete, download, delete)
     }
 
     private fun uploadAndDelete(file: Path): SchematicKeys? {
