@@ -1,0 +1,6 @@
+# The url of the backend server (Arkitektonika)
+backendUrl: https://api.schematic.cloud/
+# The url used to generate a download link from.
+downloadUrl: https://api.schematic.cloud/download/{key}
+# The url used to generate a deletion link from.
+deleteUrl: https://api.schematic.cloud/delete/{key}
