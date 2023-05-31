@@ -64,7 +64,7 @@ dependencies {
     annotationProcessor("cloud.commandframework:cloud-annotations:1.8.0")
     implementation("me.lucko:commodore:2.2")
 
-    testImplementation(platform("org.junit:junit-bom:5.9.1"))
+    testImplementation(platform("org.junit:junit-bom:5.9.3"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
 
