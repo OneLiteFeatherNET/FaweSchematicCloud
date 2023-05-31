@@ -1,6 +1,7 @@
 package dev.themeinerlp.faweschematiccloud.commands
 
 import cloud.commandframework.annotations.CommandMethod
+import cloud.commandframework.annotations.CommandPermission
 import com.fastasyncworldedit.core.configuration.Caption
 import com.fastasyncworldedit.core.extent.clipboard.MultiClipboardHolder
 import com.sk89q.worldedit.WorldEdit
@@ -14,6 +15,7 @@ class DownloadCommand(
 ) {
 
     @CommandMethod("/download")
+    @CommandPermission("worldedit.clipboard.download")
     fun download(player: Player) {
         val actor = BukkitAdapter.adapt(player)
         val sessionManager = WorldEdit.getInstance().sessionManager
