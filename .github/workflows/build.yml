@@ -39,7 +39,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: FAWESchematicCloud Archive
-          path: build/libs/FAWESchematicCloud-*.jar
+          path: build/libs/FaweSchematicCloud-*.jar
 #      - name: Publish to hangar
 #        if: ${{ runner.os == 'Linux' && env.STATUS == 'release' && github.event_name == 'push' && github.ref == 'refs/heads/master'}}
 #        run: ./gradlew publishAllPublicationsToHangar --no-daemon
