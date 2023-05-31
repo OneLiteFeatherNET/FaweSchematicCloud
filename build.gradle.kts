@@ -67,6 +67,51 @@ val supportedMinecraftVersions = listOf(
     "1.19.4"
 )
 
-tasks.test {
-    useJUnitPlatform()
+tasks {
+    test {
+        useJUnitPlatform()
+        testLogging {
+            events("passed", "skipped", "failed")
+        }
+    }
+    supportedMinecraftVersions.forEach { serverVersion ->
+        register<RunServer>("run-$serverVersion") {
+            minecraftVersion(serverVersion)
+            jvmArgs("-DPaper.IgnoreJavaVersion=true", "-Dcom.mojang.eula.agree=true")
+            group = "run paper"
+            runDirectory.set(file("run-$serverVersion"))
+            pluginJars(rootProject.tasks.shadowJar.map { it.archiveFile }.get())
+        }
+    }
+    register<RunServer>("runFolia") {
+        downloadsApiService.set(xyz.jpenilla.runtask.service.DownloadsAPIService.folia(project))
+        minecraftVersion("1.19.4")
+        group = "run paper"
+        runDirectory.set(file("run-folia"))
+        jvmArgs("-DPaper.IgnoreJavaVersion=true", "-Dcom.mojang.eula.agree=true")
+    }
+    generateBukkitPluginDescription {
+        doLast {
+            outputDirectory.file(fileName).get().asFile.appendText("folia-supported: true")
+        }
+    }
+}
+
+kotlin {
+    jvmToolchain(17)
+}
+
+bukkit {
+    main = "dev.themeinerlp.faweschematiccloud.FAWESchematicCloud"
+    apiVersion = "1.16"
+    authors = listOf("TheMeinerLP")
+
+    depend = listOf("FastAsyncWorldEdit")
+
+    permissions {
+        register("faweschematiccloud.download") {
+            description = "Download loads a schematic"
+            default = Default.TRUE
+        }
+    }
 }
