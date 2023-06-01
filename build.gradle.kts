@@ -12,6 +12,7 @@ plugins {
     id("io.papermc.hangar-publish-plugin") version "0.0.5"
     id("com.modrinth.minotaur") version "2.+"
     id("org.ajoberstar.grgit") version "5.2.0"
+    id("org.jetbrains.changelog") version "2.0.0"
 }
 
 if (!File("$rootDir/.git").exists()) {
@@ -129,4 +130,13 @@ bukkit {
             default = Default.TRUE
         }
     }
+}
+
+changelog {
+    version.set(baseVersion)
+    path.set("${project.projectDir}/CHANGELOG.md")
+    itemPrefix.set("-")
+    keepUnreleasedSection.set(true)
+    unreleasedTerm.set("[Unreleased]")
+    groups.set(listOf("Added", "Changed", "Deprecated", "Removed", "Fixed", "Security"))
 }
