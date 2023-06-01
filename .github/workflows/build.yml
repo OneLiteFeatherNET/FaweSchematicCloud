@@ -40,28 +40,28 @@ jobs:
         with:
           name: FAWESchematicCloud Archive
           path: build/libs/FaweSchematicCloud-*.jar
-#      - name: Publish to hangar
-#        if: ${{ runner.os == 'Linux' && env.STATUS == 'release' && github.event_name == 'push' && github.ref == 'refs/heads/master'}}
-#        run: ./gradlew publishAllPublicationsToHangar --no-daemon
-#        env:
-#          HANGAR_SECRET: ${{secrets.HANGAR_KEY}}
-#          HANGAR_CHANNEL: "Release"
-#      - name: Publish to hangar snapshot
-#        if: ${{ runner.os == 'Linux' && env.STATUS != 'release' && github.event_name == 'push' && github.ref == 'refs/heads/master'}}
-#        run: ./gradlew publishAllPublicationsToHangar --no-daemon
-#        env:
-#          HANGAR_SECRET: ${{secrets.HANGAR_KEY}}
-#          HANGAR_CHANNEL: "Snapshot"
-#      - name: Publish to Modrinth
-#        if: ${{ runner.os == 'Linux' && env.STATUS == 'release' && github.event_name == 'push' && github.ref == 'refs/heads/master'}}
-#        run: ./gradlew modrinth  --no-daemon
-#        env:
-#          MODRINTH_TOKEN: ${{ secrets.MODRINTH_KEY }}
-#          MODRINTH_CHANNEL: "release"
-#          SHA_SHORT: ${{steps.vars.outputs.sha_short}}
-#      - name: Publish to Modrinth Snapshot
-#        if: ${{ runner.os == 'Linux' && env.STATUS != 'release' && github.event_name == 'push' && github.ref == 'refs/heads/master'}}
-#        run: ./gradlew modrinth  --no-daemon
-#        env:
-#          MODRINTH_TOKEN: ${{ secrets.MODRINTH_KEY }}
-#          MODRINTH_CHANNEL: "beta"
+      - name: Publish to hangar
+        if: ${{ runner.os == 'Linux' && env.STATUS == 'release' && github.event_name == 'push' && github.ref == 'refs/heads/master'}}
+        run: ./gradlew publishAllPublicationsToHangar --no-daemon
+        env:
+          HANGAR_SECRET: ${{secrets.HANGAR_KEY}}
+          HANGAR_CHANNEL: "Release"
+      - name: Publish to hangar snapshot
+        if: ${{ runner.os == 'Linux' && env.STATUS != 'release' && github.event_name == 'push' && github.ref == 'refs/heads/master'}}
+        run: ./gradlew publishAllPublicationsToHangar --no-daemon
+        env:
+          HANGAR_SECRET: ${{secrets.HANGAR_KEY}}
+          HANGAR_CHANNEL: "Snapshot"
+      - name: Publish to Modrinth
+        if: ${{ runner.os == 'Linux' && env.STATUS == 'release' && github.event_name == 'push' && github.ref == 'refs/heads/master'}}
+        run: ./gradlew modrinth  --no-daemon
+        env:
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_KEY }}
+          MODRINTH_CHANNEL: "release"
+          SHA_SHORT: ${{steps.vars.outputs.sha_short}}
+      - name: Publish to Modrinth Snapshot
+        if: ${{ runner.os == 'Linux' && env.STATUS != 'release' && github.event_name == 'push' && github.ref == 'refs/heads/master'}}
+        run: ./gradlew modrinth  --no-daemon
+        env:
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_KEY }}
+          MODRINTH_CHANNEL: "beta"

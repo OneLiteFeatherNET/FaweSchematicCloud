@@ -121,15 +121,7 @@ bukkit {
     main = "dev.themeinerlp.faweschematiccloud.FAWESchematicCloud"
     apiVersion = "1.16"
     authors = listOf("TheMeinerLP")
-
     depend = listOf("FastAsyncWorldEdit")
-
-    permissions {
-        register("faweschematiccloud.download") {
-            description = "Download loads a schematic"
-            default = Default.TRUE
-        }
-    }
 }
 
 changelog {
@@ -139,4 +131,42 @@ changelog {
     keepUnreleasedSection.set(true)
     unreleasedTerm.set("[Unreleased]")
     groups.set(listOf("Added", "Changed", "Deprecated", "Removed", "Fixed", "Security"))
+}
+
+hangarPublish {
+    publications.register("FaweSchematicCloud") {
+        version.set(project.version.toString())
+        channel.set(System.getenv("HANGAR_CHANNEL"))
+        changelog.set(
+            project.changelog.renderItem(
+                project.changelog.getOrNull(baseVersion) ?: project.changelog.getUnreleased()
+            )
+        )
+        apiKey.set(System.getenv("HANGAR_SECRET"))
+        owner.set("OneLiteFeather")
+        slug.set("FaweSchematicCloud")
+
+        platforms {
+            register(Platforms.PAPER) {
+                jar.set(tasks.shadowJar.flatMap { it.archiveFile })
+                platformVersions.set(supportedMinecraftVersions)
+            }
+        }
+    }
+}
+
+modrinth {
+    token.set(System.getenv("MODRINTH_TOKEN"))
+    projectId.set("PldPGKGt")
+    versionNumber.set(version.toString())
+    versionType.set(System.getenv("MODRINTH_CHANNEL"))
+    uploadFile.set(tasks.shadowJar as Any)
+    gameVersions.addAll(supportedMinecraftVersions)
+    loaders.add("paper")
+    loaders.add("bukkit")
+    changelog.set(
+        project.changelog.renderItem(
+            project.changelog.getOrNull(baseVersion) ?: project.changelog.getUnreleased()
+        )
+    )
 }
