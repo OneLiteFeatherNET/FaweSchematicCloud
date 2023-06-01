@@ -164,6 +164,7 @@ modrinth {
     gameVersions.addAll(supportedMinecraftVersions)
     loaders.add("paper")
     loaders.add("bukkit")
+    loaders.add("folia")
     changelog.set(
         project.changelog.renderItem(
             project.changelog.getOrNull(baseVersion) ?: project.changelog.getUnreleased()
