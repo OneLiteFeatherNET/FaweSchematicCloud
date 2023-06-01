@@ -13,9 +13,9 @@ Use the new [Arkitektonika](https://github.com/IntellectualSites/Arkitektonika) 
 
 ## More information / external links
 
-Hangar: Soon
+Hangar: https://hangar.papermc.io/OneLiteFeather/FAWESchematicCloud
 
-Modrinth: Soon
+Modrinth: https://modrinth.com/plugin/faweschematiccloud
 
 Discord: https://discord.onelitefeather.de
 
