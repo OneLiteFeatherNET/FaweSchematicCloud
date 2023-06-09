@@ -21,13 +21,13 @@ class UnloadCommand(
 
     @CommandMethod("/schematic unload <filename>")
     @CommandPermission("worldedit.schematic.clear")
-    fun unloadSchematic(player: Player, @Argument("filename", defaultValue = "fast") filename: String) {
+    fun unloadSchematic(player: Player, @Argument("filename") filename: String) {
         unload(player, filename)
     }
 
     @CommandMethod("/schem unload <filename>")
     @CommandPermission("worldedit.schematic.clear")
-    fun unload(player: Player, @Argument("filename", defaultValue = "fast") fileName: String) {
+    fun unload(player: Player, @Argument("filename") fileName: String) {
         val sessionManager = WorldEdit.getInstance().sessionManager
         val actor = BukkitAdapter.adapt(player)
         val session = sessionManager[actor]
