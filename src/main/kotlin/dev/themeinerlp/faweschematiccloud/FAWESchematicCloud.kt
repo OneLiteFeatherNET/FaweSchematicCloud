@@ -8,6 +8,7 @@ import cloud.commandframework.execution.CommandExecutionCoordinator
 import cloud.commandframework.meta.CommandMeta
 import cloud.commandframework.paper.PaperCommandManager
 import dev.themeinerlp.faweschematiccloud.commands.DownloadCommand
+import dev.themeinerlp.faweschematiccloud.commands.LoadCommand
 import dev.themeinerlp.faweschematiccloud.util.SchematicUploader
 import org.bukkit.command.CommandSender
 import org.bukkit.plugin.java.JavaPlugin
@@ -19,7 +20,7 @@ class FAWESchematicCloud : JavaPlugin() {
         SchematicUploader(this)
     }
 
-    val paperCommandManager: PaperCommandManager<CommandSender> by lazy {
+    private val paperCommandManager: PaperCommandManager<CommandSender> by lazy {
         PaperCommandManager(
             this,
             CommandExecutionCoordinator.simpleCoordinator(),
@@ -53,6 +54,7 @@ class FAWESchematicCloud : JavaPlugin() {
     override fun onEnable() {
         saveDefaultConfig()
         annotationParser.parse(DownloadCommand(this))
+        annotationParser.parse(LoadCommand(this))
     }
 
 }
