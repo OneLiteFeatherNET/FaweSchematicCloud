@@ -43,3 +43,6 @@ web:
   deleteUrl: https://schematic.cloud/delete/{key}
 
 ```
+
+## Known issues
+- No multi clipboard support
