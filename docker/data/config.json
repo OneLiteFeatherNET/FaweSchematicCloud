@@ -1,0 +1,11 @@
+{
+  "port": 3000,
+  "prune": 1800000,
+  "maxIterations": 20,
+  "maxSchematicSize": 2147483648,
+  "limiter": {
+    "windowMs": 60000,
+    "delayAfter": 30,
+    "delayMs": 500
+  }
+}
