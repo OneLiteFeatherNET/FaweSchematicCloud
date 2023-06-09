@@ -2,8 +2,6 @@ package dev.themeinerlp.faweschematiccloud.util
 
 import com.intellectualsites.arkitektonika.Arkitektonika
 import com.intellectualsites.arkitektonika.SchematicKeys
-import com.sk89q.worldedit.extent.clipboard.io.BuiltInClipboardFormat
-import com.sk89q.worldedit.session.ClipboardHolder
 import dev.themeinerlp.faweschematiccloud.FAWESchematicCloud
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
@@ -26,8 +24,8 @@ class SchematicUploader(
         Arkitektonika.builder().withUrl(backendUrl).build()
     }
 
-    fun upload(clipboard: ClipboardHolder): CompletableFuture<SchematicUploadResult> {
-        return CompletableFuture.completedFuture(clipboard)
+    fun upload(holder: SchematicHolder): CompletableFuture<SchematicUploadResult> {
+        return CompletableFuture.completedFuture(holder)
             .thenApply(this::writeToTempFile)
             .thenApply(this::uploadAndDelete)
             .thenApply(this::wrapIntoResult)
@@ -47,12 +45,12 @@ class SchematicUploader(
     }
 
     private fun uploadAndDelete(file: Path): SchematicKeys? {
-        try {
+        return try {
             val upload = arkitektonika.upload(file.toFile())
-            return upload.join()
+            upload.join()
         } catch (e: CompletionException) {
             logger.error("Failed to upload schematic", e)
-            return null
+            null
         } finally {
             try {
                 Files.delete(file)
@@ -63,11 +61,11 @@ class SchematicUploader(
         }
     }
 
-    private fun writeToTempFile(clipboard: ClipboardHolder): Path {
+    private fun writeToTempFile(holder: SchematicHolder): Path {
         try {
             val tempFile = Files.createTempFile(tempDir, null, null)
             Files.newOutputStream(tempFile).use {
-                writeSchematic(clipboard, it)
+                writeSchematic(holder, it)
             }
             return tempFile
         } catch (e: IOException) {
@@ -75,9 +73,9 @@ class SchematicUploader(
         }
     }
 
-    private fun writeSchematic(clipboard: ClipboardHolder, outputStream: OutputStream) {
-        val cb = clipboard.clipboard
-        BuiltInClipboardFormat.FAST.write(outputStream, cb)
+    private fun writeSchematic(holder: SchematicHolder, outputStream: OutputStream) {
+        val cb = holder.clipboard.clipboard
+        holder.format.write(outputStream, cb)
 
     }
 
