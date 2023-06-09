@@ -27,8 +27,8 @@ class DownloadCommand(
                 if (throwable != null || !result.success) {
                     actor.print(Caption.of("fawe.web.generating.link.failed"))
                 } else {
-                    val download = result.apiDownloadUrl!!
-                    val frontEndDownload = result.apiDownloadUrl
+                    val download = result.downloadUrl!!
+                    val frontEndDownload = result.downloadUrl
                     actor.print(
                         Caption.of("fawe.web.download.link", frontEndDownload).clickEvent(ClickEvent.openUrl(download))
                     )
