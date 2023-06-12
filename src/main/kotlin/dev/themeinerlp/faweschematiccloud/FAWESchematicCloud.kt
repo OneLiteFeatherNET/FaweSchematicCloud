@@ -7,8 +7,9 @@ import cloud.commandframework.bukkit.CloudBukkitCapabilities
 import cloud.commandframework.execution.CommandExecutionCoordinator
 import cloud.commandframework.meta.CommandMeta
 import cloud.commandframework.paper.PaperCommandManager
-import dev.themeinerlp.faweschematiccloud.commands.DownloadCommand
-import dev.themeinerlp.faweschematiccloud.commands.LoadCommand
+import com.sk89q.worldedit.WorldEdit
+import com.sk89q.worldedit.command.SchematicCommands
+import dev.themeinerlp.faweschematiccloud.commands.*
 import dev.themeinerlp.faweschematiccloud.util.SchematicUploader
 import org.bukkit.command.CommandSender
 import org.bukkit.plugin.java.JavaPlugin
@@ -51,10 +52,19 @@ class FAWESchematicCloud : JavaPlugin() {
         )
     }
 
+    val schematicCommand: SchematicCommands by lazy {
+        SchematicCommands(WorldEdit.getInstance())
+    }
+
     override fun onEnable() {
         saveDefaultConfig()
         annotationParser.parse(DownloadCommand(this))
         annotationParser.parse(LoadCommand(this))
+        annotationParser.parse(LoadAllCommand(this))
+        annotationParser.parse(ClearCommand(this))
+        annotationParser.parse(UnloadCommand(this))
+        annotationParser.parse(MoveCommand(this))
+        annotationParser.parse(SaveCommand(this))
     }
 
 }

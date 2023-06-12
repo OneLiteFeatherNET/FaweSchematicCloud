@@ -15,7 +15,7 @@ import dev.themeinerlp.faweschematiccloud.util.SchematicHolder
 import org.bukkit.entity.Player
 
 class DownloadCommand(
-        private val faweSchematicCloud: FAWESchematicCloud
+    private val faweSchematicCloud: FAWESchematicCloud
 ) {
 
     @CommandMethod("/download [format]")
