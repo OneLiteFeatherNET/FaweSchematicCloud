@@ -1,5 +1,6 @@
 package dev.themeinerlp.faweschematiccloud
 
+import cloud.commandframework.CommandManager
 import cloud.commandframework.annotations.AnnotationParser
 import cloud.commandframework.arguments.parser.ParserParameters
 import cloud.commandframework.arguments.parser.StandardParameters
@@ -39,6 +40,7 @@ class FAWESchematicCloud : JavaPlugin() {
             paperCommandManager.registerAsynchronousCompletions()
             this.getLogger().info("Asynchronous completions enabled")
         }
+        paperCommandManager.setSetting(CommandManager.ManagerSettings.OVERRIDE_EXISTING_COMMANDS, false);
         val commandMetaFunction =
             Function<ParserParameters, CommandMeta> { p: ParserParameters ->
                 CommandMeta.simple().with(
@@ -65,6 +67,7 @@ class FAWESchematicCloud : JavaPlugin() {
         annotationParser.parse(UnloadCommand(this))
         annotationParser.parse(MoveCommand(this))
         annotationParser.parse(SaveCommand(this))
+        annotationParser.parse(FormatsCommand(this))
     }
 
 }
