@@ -17,7 +17,7 @@ Hangar: https://hangar.papermc.io/OneLiteFeather/FAWESchematicCloud
 
 Modrinth: https://modrinth.com/plugin/faweschematiccloud
 
-Discord: https://discord.onelitefeather.de
+Discord: https://discord.onelitefeather.net
 
 ## Permissions
 - `worldedit.clipboard.download` - Allows the player  the FAWE download command
