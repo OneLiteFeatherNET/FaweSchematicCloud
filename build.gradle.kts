@@ -1,3 +1,4 @@
+import com.modrinth.minotaur.dependencies.Dependency
 import io.papermc.hangarpublishplugin.model.Platforms
 import net.minecrell.pluginyml.bukkit.BukkitPluginDescription.Permission.Default
 import org.ajoberstar.grgit.Grgit
@@ -172,4 +173,7 @@ modrinth {
             project.changelog.getOrNull(baseVersion) ?: project.changelog.getUnreleased()
         )
     )
+    dependencies {
+        required.project("z4HZZnLr") // Fawe
+    }
 }
