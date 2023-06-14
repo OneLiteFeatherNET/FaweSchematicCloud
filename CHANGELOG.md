@@ -3,20 +3,6 @@
 ## [Unreleased]
 
 ### Added
-- BStats Support
-- Changelog gradle plugin
-- Modrinth publish
-- Hangar publish
-- Add schematic commands
-  - Load - Modified
-  - Save
-  - List
-  - Move
-  - Unload
-  - Clear
-  - Load all
-  - Formats
-  - Delete
 
 ### Changed
 
@@ -27,3 +13,20 @@
 ### Fixed
 
 ### Security
+
+## 1.1.0 - 2023-06-14
+
+### Added
+- BStats Support
+- Changelog gradle plugin
+- Modrinth publish
+- Hangar publish
+- - Load - Modified
+  - Save
+  - List
+  - Move
+  - Unload
+  - Clear
+  - Load all
+  - Formats
+  - Delete
