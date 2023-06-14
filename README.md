@@ -20,10 +20,10 @@ Modrinth: https://modrinth.com/plugin/faweschematiccloud
 Discord: https://discord.onelitefeather.net
 
 ## Permissions
-- `worldedit.clipboard.download` - Allows the player  the FAWE download command
+- Same permission as FAWE
 
 ## Commands
-- `/download` - Creates schematic download url
+- Same schematic commands as FAWE
 
 ## Configuration
 ```yaml
