@@ -69,6 +69,7 @@ class FAWESchematicCloud : JavaPlugin() {
         annotationParser.parse(SaveCommand(this))
         annotationParser.parse(FormatsCommand(this))
         annotationParser.parse(ListCommand(this))
+        annotationParser.parse(DeleteCommand(this))
     }
 
 }
