@@ -50,7 +50,7 @@ repositories {
 
 dependencies {
     // Paper
-    compileOnly("io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
     // Fawe Support
     implementation(platform("com.intellectualsites.bom:bom-1.18.x:1.27"))
     implementation("com.intellectualsites.arkitektonika:Arkitektonika-Client:2.1.2")
@@ -81,7 +81,8 @@ val supportedMinecraftVersions = listOf(
     "1.19.2",
     "1.19.3",
     "1.19.4",
-    "1.20"
+    "1.20",
+    "1.20.1",
 )
 
 tasks {
