@@ -53,7 +53,7 @@ dependencies {
     // Paper
     compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
     // Fawe Support
-    implementation(platform("com.intellectualsites.bom:bom-1.18.x:1.27"))
+    implementation(platform("com.intellectualsites.bom:bom-1.18.x:1.31"))
     implementation("com.intellectualsites.arkitektonika:Arkitektonika-Client:2.1.2")
     compileOnly("com.fastasyncworldedit:FastAsyncWorldEdit-Core")
     compileOnly("com.fastasyncworldedit:FastAsyncWorldEdit-Bukkit") {
