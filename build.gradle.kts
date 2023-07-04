@@ -29,7 +29,7 @@ if (!File("$rootDir/.git").exists()) {
 
 var baseVersion by extra("1.1.0")
 var extension by extra("")
-var snapshot by extra("-SNAPSHOT")
+var snapshot by extra("")
 
 group = "dev.themeinerlp"
 
