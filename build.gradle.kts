@@ -60,10 +60,10 @@ dependencies {
         isTransitive = false
     }
     // Commands
-    implementation("cloud.commandframework:cloud-annotations:1.8.3")
+    implementation("cloud.commandframework:cloud-annotations:1.8.4")
     implementation("cloud.commandframework:cloud-minecraft-extras:1.8.4")
     implementation("cloud.commandframework:cloud-paper:1.8.4")
-    annotationProcessor("cloud.commandframework:cloud-annotations:1.8.3")
+    annotationProcessor("cloud.commandframework:cloud-annotations:1.8.4")
     implementation("me.lucko:commodore:2.2")
 
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
