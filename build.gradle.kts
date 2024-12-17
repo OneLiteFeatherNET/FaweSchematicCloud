@@ -146,8 +146,7 @@ hangarPublish {
             )
         )
         apiKey.set(System.getenv("HANGAR_SECRET"))
-        owner.set("OneLiteFeather")
-        slug.set("FaweSchematicCloud")
+        id.set("FaweSchematicCloud")
 
         platforms {
             register(Platforms.PAPER) {
