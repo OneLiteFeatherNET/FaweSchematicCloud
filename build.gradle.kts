@@ -13,7 +13,7 @@ plugins {
     id("io.papermc.hangar-publish-plugin") version "0.1.2"
     id("com.modrinth.minotaur") version "2.+"
     id("org.ajoberstar.grgit") version "5.2.1"
-    id("org.jetbrains.changelog") version "2.2.0"
+    id("org.jetbrains.changelog") version "2.2.1"
 }
 
 if (!File("$rootDir/.git").exists()) {
