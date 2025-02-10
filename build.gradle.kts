@@ -1,6 +1,4 @@
-import com.modrinth.minotaur.dependencies.Dependency
 import io.papermc.hangarpublishplugin.model.Platforms
-import net.minecrell.pluginyml.bukkit.BukkitPluginDescription.Permission.Default
 import org.ajoberstar.grgit.Grgit
 import xyz.jpenilla.runpaper.task.RunServer
 import java.util.*
@@ -46,7 +44,7 @@ version = "%s%s".format(Locale.ROOT, baseVersion, extension)
 
 repositories {
     mavenCentral()
-    maven("https://papermc.io/repo/repository/maven-public/")
+    maven("https://repo.papermc.io/repository/maven-public")
 }
 
 dependencies {
