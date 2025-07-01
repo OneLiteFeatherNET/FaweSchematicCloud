@@ -10,7 +10,7 @@ plugins {
     id("net.minecrell.plugin-yml.bukkit") version "0.6.0"
     id("io.papermc.hangar-publish-plugin") version "0.1.3"
     id("com.modrinth.minotaur") version "2.+"
-    id("org.ajoberstar.grgit") version "5.3.0"
+    id("org.ajoberstar.grgit") version "5.3.2"
     id("org.jetbrains.changelog") version "2.2.1"
 }
 
