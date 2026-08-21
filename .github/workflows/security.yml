@@ -1,0 +1,55 @@
+name: Security
+
+# Trivy vulnerability gate plus a CycloneDX SBOM of the repository. Self-contained
+# on purpose: it needs no build tool and no registry credentials, so it is the
+# baseline security gate for every repository regardless of language.
+on:
+  pull_request:
+  push:
+    branches: [master]
+  schedule:
+    - cron: "10 6 * * 1"
+  workflow_dispatch:
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  trivy:
+    name: Trivy scan
+    uses: OneLiteFeatherNET/workflows/.github/workflows/security-scan.yml@v2.8.1
+    with:
+      scan-type: "fs"
+      scanners: "vuln,secret"
+      severity: "CRITICAL,HIGH"
+      # Report-only for now, so adopting this does not turn CI red on day one.
+      fail-on-findings: false
+      upload-sarif: true
+    secrets: inherit
+
+  sbom:
+    name: CycloneDX SBOM
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Generate SBOM
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: fs
+          scan-ref: .
+          format: cyclonedx
+          output: bom.json
+          # An SBOM is an inventory, not a finding list - never fail on it.
+          exit-code: '0'
+
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom-cyclonedx
+          path: bom.json
+          if-no-files-found: error
+          retention-days: 90
