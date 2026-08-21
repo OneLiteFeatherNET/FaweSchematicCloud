@@ -6,7 +6,14 @@
   "packages": {
     ".": {
       "package-name": "FaweSchematicCloud",
-      "changelog-path": "CHANGELOG.md"
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        {
+          "type": "generic",
+          "path": "build.gradle.kts"
+        }
+      ]
     }
-  }
+  },
+  "bootstrap-sha": "f408c005ed3db8ab95accfc90c492f494de85b07"
 }
