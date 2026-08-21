@@ -1,0 +1,17 @@
+name: PR Lint
+
+# Conventional Commits on the PR title and every commit on the branch.
+# release-please parses those commit types to decide the version bump and to
+# build the changelog - a non-conventional commit silently produces neither.
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  lint:
+    uses: OneLiteFeatherNET/workflows/.github/workflows/pr-lint.yml@v2.8.1
+    secrets: inherit
